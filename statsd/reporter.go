@@ -72,16 +72,27 @@ func NewReporter(statsd statsd.Statter, opts Options) tally.StatsReporter {
 	}
 }
 
+func getTags(tags map[string]string) []statsd.Tag {
+	var tagsColl = make([]statsd.Tag, len(tags))
+	i := 0
+	for k, v := range tags {
+		tagsColl[i] = statsd.Tag{k, v}
+		i++
+	}
+
+	return tagsColl
+}
+
 func (r *cactusStatsReporter) ReportCounter(name string, tags map[string]string, value int64) {
-	r.statter.Inc(name, value, r.sampleRate)
+	r.statter.Inc(name, value, r.sampleRate, getTags(tags)...)
 }
 
 func (r *cactusStatsReporter) ReportGauge(name string, tags map[string]string, value float64) {
-	r.statter.Gauge(name, int64(value), r.sampleRate)
+	r.statter.Gauge(name, int64(value), r.sampleRate, getTags(tags)...)
 }
 
 func (r *cactusStatsReporter) ReportTimer(name string, tags map[string]string, interval time.Duration) {
-	r.statter.TimingDuration(name, interval, r.sampleRate)
+	r.statter.TimingDuration(name, interval, r.sampleRate, getTags(tags)...)
 }
 
 func (r *cactusStatsReporter) ReportHistogramValueSamples(
@@ -96,7 +107,7 @@ func (r *cactusStatsReporter) ReportHistogramValueSamples(
 		fmt.Sprintf("%s.%s-%s", name,
 			r.valueBucketString(bucketLowerBound),
 			r.valueBucketString(bucketUpperBound)),
-		samples, r.sampleRate)
+		samples, r.sampleRate, getTags(tags)...)
 }
 
 func (r *cactusStatsReporter) ReportHistogramDurationSamples(
@@ -111,7 +122,7 @@ func (r *cactusStatsReporter) ReportHistogramDurationSamples(
 		fmt.Sprintf("%s.%s-%s", name,
 			r.durationBucketString(bucketLowerBound),
 			r.durationBucketString(bucketUpperBound)),
-		samples, r.sampleRate)
+		samples, r.sampleRate, getTags(tags)...)
 }
 
 func (r *cactusStatsReporter) valueBucketString(
