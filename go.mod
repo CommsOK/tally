@@ -1,4 +1,4 @@
-module github.com/uber-go/tally/v4
+module github.com/CommsOK/tally/v4
 
 go 1.20
 
