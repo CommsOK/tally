@@ -6,7 +6,7 @@ package v2
 import (
 	"bytes"
 	"fmt"
-	"github.com/uber-go/tally/v4/thirdparty/github.com/apache/thrift/lib/go/thrift"
+	"github.com/CommsOK/tally/v4/thirdparty/github.com/apache/thrift/lib/go/thrift"
 )
 
 // (needed to ensure safety because of naive import list construction.)
@@ -69,10 +69,10 @@ func (p *MetricType) UnmarshalText(text []byte) error {
 }
 
 // Attributes:
-//  - MetricType
-//  - Count
-//  - Gauge
-//  - Timer
+//   - MetricType
+//   - Count
+//   - Gauge
+//   - Timer
 type MetricValue struct {
 	MetricType MetricType `thrift:"metricType,1,required" json:"metricType"`
 	Count      int64      `thrift:"count,2,required" json:"count"`
@@ -287,8 +287,8 @@ func (p *MetricValue) String() string {
 }
 
 // Attributes:
-//  - Name
-//  - Value
+//   - Name
+//   - Value
 type MetricTag struct {
 	Name  string `thrift:"name,1,required" json:"name"`
 	Value string `thrift:"value,2,required" json:"value"`
@@ -424,10 +424,10 @@ func (p *MetricTag) String() string {
 }
 
 // Attributes:
-//  - Name
-//  - Value
-//  - Timestamp
-//  - Tags
+//   - Name
+//   - Value
+//   - Timestamp
+//   - Tags
 type Metric struct {
 	Name      string      `thrift:"name,1,required" json:"name"`
 	Value     MetricValue `thrift:"value,2,required" json:"value"`
@@ -671,8 +671,8 @@ func (p *Metric) String() string {
 }
 
 // Attributes:
-//  - Metrics
-//  - CommonTags
+//   - Metrics
+//   - CommonTags
 type MetricBatch struct {
 	Metrics    []Metric    `thrift:"metrics,1,required" json:"metrics"`
 	CommonTags []MetricTag `thrift:"commonTags,2" json:"commonTags,omitempty"`

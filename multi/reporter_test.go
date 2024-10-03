@@ -24,9 +24,9 @@ import (
 	"testing"
 	"time"
 
+	tally "github.com/CommsOK/tally/v4"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	tally "github.com/uber-go/tally/v4"
 )
 
 func TestMultiReporter(t *testing.T) {

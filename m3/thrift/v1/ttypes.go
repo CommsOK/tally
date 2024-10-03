@@ -6,7 +6,7 @@ package v1
 import (
 	"bytes"
 	"fmt"
-	"github.com/uber-go/tally/v4/thirdparty/github.com/apache/thrift/lib/go/thrift"
+	"github.com/CommsOK/tally/v4/thirdparty/github.com/apache/thrift/lib/go/thrift"
 )
 
 // (needed to ensure safety because of naive import list construction.)
@@ -20,9 +20,9 @@ var GoUnusedProtection__ int
 // must contain one of these values
 //
 // Attributes:
-//  - Count
-//  - Gauge
-//  - Timer
+//   - Count
+//   - Gauge
+//   - Timer
 type MetricValue struct {
 	Count *CountValue `thrift:"count,1" json:"count,omitempty"`
 	Gauge *GaugeValue `thrift:"gauge,2" json:"gauge,omitempty"`
@@ -231,7 +231,7 @@ func (p *MetricValue) String() string {
 // Different types of count values
 //
 // Attributes:
-//  - I64Value
+//   - I64Value
 type CountValue struct {
 	I64Value *int64 `thrift:"i64Value,1" json:"i64Value,omitempty"`
 }
@@ -347,8 +347,8 @@ func (p *CountValue) String() string {
 // Different types of gauge values
 //
 // Attributes:
-//  - I64Value
-//  - DValue
+//   - I64Value
+//   - DValue
 type GaugeValue struct {
 	I64Value *int64   `thrift:"i64Value,1" json:"i64Value,omitempty"`
 	DValue   *float64 `thrift:"dValue,2" json:"dValue,omitempty"`
@@ -512,8 +512,8 @@ func (p *GaugeValue) String() string {
 // Different types of timer values
 //
 // Attributes:
-//  - I64Value
-//  - DValue
+//   - I64Value
+//   - DValue
 type TimerValue struct {
 	I64Value *int64   `thrift:"i64Value,1" json:"i64Value,omitempty"`
 	DValue   *float64 `thrift:"dValue,2" json:"dValue,omitempty"`
@@ -677,8 +677,8 @@ func (p *TimerValue) String() string {
 // Tags that can be applied to a metric
 //
 // Attributes:
-//  - TagName
-//  - TagValue
+//   - TagName
+//   - TagValue
 type MetricTag struct {
 	TagName  string  `thrift:"tagName,1" json:"tagName"`
 	TagValue *string `thrift:"tagValue,2" json:"tagValue,omitempty"`
@@ -816,10 +816,10 @@ func (p *MetricTag) String() string {
 // The metric that is being emitted
 //
 // Attributes:
-//  - Name
-//  - MetricValue
-//  - Timestamp
-//  - Tags
+//   - Name
+//   - MetricValue
+//   - Timestamp
+//   - Tags
 type Metric struct {
 	Name        string              `thrift:"name,1" json:"name"`
 	MetricValue *MetricValue        `thrift:"metricValue,2" json:"metricValue,omitempty"`
@@ -1063,8 +1063,8 @@ func (p *Metric) String() string {
 // common properties like the cluster and service.
 //
 // Attributes:
-//  - Metrics
-//  - CommonTags
+//   - Metrics
+//   - CommonTags
 type MetricBatch struct {
 	Metrics    []*Metric           `thrift:"metrics,1" json:"metrics"`
 	CommonTags map[*MetricTag]bool `thrift:"commonTags,2" json:"commonTags,omitempty"`

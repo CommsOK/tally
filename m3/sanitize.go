@@ -21,7 +21,7 @@
 package m3
 
 import (
-	tally "github.com/uber-go/tally/v4"
+	tally "github.com/CommsOK/tally/v4"
 )
 
 // DefaultSanitizerOpts are the options for the default M3 sanitizer.

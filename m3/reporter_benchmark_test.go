@@ -25,7 +25,7 @@ import (
 	"testing"
 	"time"
 
-	tally "github.com/uber-go/tally/v4"
+	tally "github.com/CommsOK/tally/v4"
 )
 
 func BenchmarkNewMetric(b *testing.B) {

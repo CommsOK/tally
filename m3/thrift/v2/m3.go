@@ -6,7 +6,7 @@ package v2
 import (
 	"bytes"
 	"fmt"
-	"github.com/uber-go/tally/v4/thirdparty/github.com/apache/thrift/lib/go/thrift"
+	"github.com/CommsOK/tally/v4/thirdparty/github.com/apache/thrift/lib/go/thrift"
 )
 
 // (needed to ensure safety because of naive import list construction.)
@@ -47,7 +47,7 @@ func NewM3ClientProtocol(t thrift.TTransport, iprot thrift.TProtocol, oprot thri
 }
 
 // Parameters:
-//  - Batch
+//   - Batch
 func (p *M3Client) EmitMetricBatchV2(batch MetricBatch) (err error) {
 	if err = p.sendEmitMetricBatchV2(batch); err != nil {
 		return
@@ -143,7 +143,7 @@ func (p *m3ProcessorEmitMetricBatchV2) Process(seqId int32, iprot, oprot thrift.
 // HELPER FUNCTIONS AND STRUCTURES
 
 // Attributes:
-//  - Batch
+//   - Batch
 type M3EmitMetricBatchV2Args struct {
 	Batch MetricBatch `thrift:"batch,1" json:"batch"`
 }

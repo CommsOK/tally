@@ -28,7 +28,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/uber-go/tally/v4/internal/identity"
+	"github.com/CommsOK/tally/v4/internal/identity"
 )
 
 var (

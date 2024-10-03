@@ -25,9 +25,9 @@ import (
 	"math/rand"
 	"time"
 
+	tally "github.com/CommsOK/tally/v4"
+	statsdreporter "github.com/CommsOK/tally/v4/statsd"
 	"github.com/cactus/go-statsd-client/v5/statsd"
-	tally "github.com/uber-go/tally/v4"
-	statsdreporter "github.com/uber-go/tally/v4/statsd"
 )
 
 // To view statsd emitted metrics locally you can use
